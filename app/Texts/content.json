@@ -1,0 +1,112 @@
+{
+  "SliderMenu": [
+    {
+      "title": "Clients",
+      "icon": "Clients.png",
+      "url": "Clients"
+    },
+    { "title": "Paiments", "icon": "Paiments.png", "url": "Paiments" },
+    { "title": "Sessions", "icon": "Sessions.png", "url": "Sessions" },
+    { "title": "Sales", "icon": "Sales.png", "url": "Sales" },
+    { "title": "Caisse", "icon": "Caisse.png", "url": "Caisse" },
+    { "title": "Employees", "icon": "Employees.png", "url": "Employees" }
+  ],
+  "Paiments": {
+    "title": "Paiments"
+  },
+  "Sessions": {
+    "title": "Sessions"
+  },
+  "Sales": {
+    "title": "Sales"
+  },
+  "Caisse": {
+    "title": "Caisse"
+  },
+  "Employees": {
+    "title": "Employees"
+  },
+  "Clients": {
+    "title": "Clients",
+    "table": {
+      "columns": [
+        { "accessor": "CodeBar", "label": "CodeBar", "sortable": false },
+        { "accessor": "FullName", "label": "Full Name", "sortable": true },
+        { "accessor": "Num", "label": "Num", "sortable": false },
+        { "accessor": "Address", "label": "Address", "sortable": false },
+        {
+          "accessor": "DateNaissance",
+          "label": "Date de Naissance",
+          "sortable": true
+        },
+        { "accessor": "date", "label": "Date", "sortable": true }
+      ],
+
+      "SearchPlaceHolder": "Search Clients..."
+    },
+    "AddClient": {
+      "FirstFields": [
+        {
+          "accessor": "CodeBar",
+          "label": "Code Bar",
+          "type": "text",
+          "required": false,
+          "placeholder": "Enter code bar"
+        },
+        {
+          "accessor": "FullName",
+          "label": "Full Name",
+          "type": "text",
+          "required": true,
+          "placeholder": "Enter full name"
+        },
+        {
+          "accessor": "Num",
+          "label": "Num",
+          "type": "number",
+          "required": true,
+          "placeholder": "Enter number"
+        },
+        {
+          "accessor": "Address",
+          "label": "Address",
+          "type": "text",
+          "required": false,
+          "placeholder": "Enter address"
+        },
+        {
+          "accessor": "date",
+          "label": "Date de Naissance",
+          "type": "date",
+          "required": true,
+          "placeholder": "Pick date of birth"
+        }
+      ],
+      "AddButton": "Add Client",
+      "Title": "Add Client"
+    }
+  },
+  "Labels": {
+    "Add": "Add",
+    "Update": "Update",
+    "Delete": "Delete",
+    "View": "View",
+    "Edit": "Edit",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "Stats": "Stats",
+    "Export": "Export",
+    "Import": "Import",
+    "Refresh": "Refresh",
+    "Print": "Print",
+    "Submit": "Submit",
+    "Reset": "Reset",
+    "Filter": "Filter",
+    "Search": "Search",
+    "Download": "Download",
+    "pickdata": "Pick date",
+    "CodeBar": "Code Bar",
+    "Generate": " Generate",
+    "Next": "Next"
+  }
+}
