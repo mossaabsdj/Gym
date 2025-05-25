@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import object from "@/app/Texts/content.json";
+import JsBarcode from "jsbarcode"; // Add this import
 
 const AddModal = ({ open, onClose, onSubmit, data }) => {
   const FirstFields = data.AddClient.FirstFields;
@@ -15,9 +16,22 @@ const AddModal = ({ open, onClose, onSubmit, data }) => {
   }, {});
   const [values, setValues] = useState(initialValues);
 
-  const barcodeUrl = values.CodeBar
-    ? `https://bwipjs-api.metafloor.com/?bcid=code128&text=${values.CodeBar}&scale=3&height=10`
-    : "";
+  const barcodeRef = useRef(null);
+
+  // Generate barcode locally when CodeBar changes
+  useEffect(() => {
+    if (barcodeRef.current && values.CodeBar) {
+      JsBarcode(barcodeRef.current, values.CodeBar, {
+        format: "CODE128",
+        width: 2,
+        height: 42,
+        displayValue: false,
+        margin: 0,
+        background: "#fff",
+        lineColor: "#000",
+      });
+    }
+  }, [values.CodeBar, open]);
 
   const generateCodeBar = () => {
     const code = Math.random().toString().slice(2, 14);
@@ -25,7 +39,8 @@ const AddModal = ({ open, onClose, onSubmit, data }) => {
   };
 
   const handlePrintBarcode = () => {
-    if (!barcodeUrl) return;
+    if (!barcodeRef.current) return;
+    const dataUrl = barcodeRef.current.toDataURL();
     const printWindow = window.open("", "_blank", "width=400,height=200");
     printWindow.document.write(`
       <html>
@@ -37,7 +52,7 @@ const AddModal = ({ open, onClose, onSubmit, data }) => {
           </style>
         </head>
         <body>
-          <img src="${barcodeUrl}" alt="Barcode" />
+          <img src="${dataUrl}" alt="Barcode" />
           <script>
             window.onload = function() { window.print(); }
           </script>
@@ -109,12 +124,13 @@ const AddModal = ({ open, onClose, onSubmit, data }) => {
             </div>
             {values.CodeBar && (
               <div className="mt-4 flex justify-center">
-                <img
-                  src={barcodeUrl}
-                  alt="Barcode"
+                <canvas
+                  ref={barcodeRef}
                   className="bg-white border border-gray-200 rounded shadow cursor-pointer"
                   title="Click to print"
+                  style={{ maxWidth: 150, height: "42px" }}
                   onClick={handlePrintBarcode}
+                  aria-label="Barcode"
                 />
               </div>
             )}

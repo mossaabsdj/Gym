@@ -84,8 +84,26 @@
       ],
       "AddButton": "Add Client",
       "Title": "Add Client"
+    },
+    "ViewModel": {
+      "title": "View Client",
+      "DontDisplayField": "seances",
+      "plan": {
+        "xAxisLabel": "Seances",
+        "yAxisLabel": "Mois",
+        "title": "Seances Par Mois"
+      }
+    },
+    "StatsModel": {
+      "title": "Stats",
+      "totalClientsTitle": "Total Clients",
+
+      "plan": {
+        "title": "Nouveaux Clients par Mois"
+      }
     }
   },
+
   "Labels": {
     "Add": "Add",
     "Update": "Update",
@@ -94,6 +112,7 @@
     "Edit": "Edit",
     "Save": "Save",
     "Cancel": "Cancel",
+    "Close": "Close",
     "Stats": "Stats",
     "Export": "Export",
     "Import": "Import",
@@ -105,8 +124,25 @@
     "Search": "Search",
     "Download": "Download",
     "pickdata": "Pick date",
-    "CodeBar": "Code Bar",
+    "CodeBar": "Barcode",
     "Generate": " Generate",
-    "Next": "Next"
+    "Next": "Next",
+    "View": "View",
+    "Actions": "Actions",
+    "ClickToPrint": "Click to print",
+    "mounts": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ]
   }
 }

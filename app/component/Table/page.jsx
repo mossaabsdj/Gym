@@ -21,8 +21,19 @@ import { format } from "date-fns";
 import { CalendarIcon, ArrowDown, ArrowUp } from "lucide-react";
 import defaultdata from "@/app/Texts/content.json";
 
-const Page = ({ object, data, AddModel, handleStats }) => {
+const Page = ({
+  object,
+  data,
+  AddModel,
+
+  ViewModel,
+  StatsModel,
+}) => {
   const [open, setOpen] = useState(false);
+  const [openViewModel, setOpenViewModel] = useState(false);
+  const [openStatsModel, setOpenStatsModel] = useState(false);
+  const [selectedClient, setSelectedClient] = useState(null);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDate, setSelectedDate] = useState();
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -30,7 +41,9 @@ const Page = ({ object, data, AddModel, handleStats }) => {
   const Labels = defaultdata.Labels;
 
   const columns = data.table.columns;
-
+  const handleStats = () => {
+    setOpenStatsModel(true);
+  };
   const handleSort = (col) => {
     if (!col.sortable) return;
 
@@ -46,6 +59,11 @@ const Page = ({ object, data, AddModel, handleStats }) => {
   };
   const handleAdd = () => {
     setOpen(true);
+  };
+  const handleView = (row) => {
+    setSelectedClient(row); // Pass the row object to the modal
+
+    setOpenViewModel(true);
   };
   const filteredData = object.filter((row) => {
     const matchesSearch = Object.values(row)
@@ -114,7 +132,12 @@ const Page = ({ object, data, AddModel, handleStats }) => {
           + {Labels.Add}
         </Button>
 
-        <Button onClick={handleStats} variant="secondary">
+        <Button
+          onClick={() => {
+            setOpenStatsModel(true);
+          }}
+          variant="secondary"
+        >
           📊 {Labels.Stats}
         </Button>
       </div>
@@ -143,7 +166,7 @@ const Page = ({ object, data, AddModel, handleStats }) => {
                 </div>
               </TableHead>
             ))}
-            <TableHead className="text-right">Actions</TableHead>
+            <TableHead className="text-right">{Labels.Actions}</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -159,8 +182,14 @@ const Page = ({ object, data, AddModel, handleStats }) => {
                 </TableCell>
               ))}
               <TableCell className="text-right">
-                <Button variant="outline" size="sm">
-                  View
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    handleView(row);
+                  }}
+                >
+                  {Labels.View}
                 </Button>
               </TableCell>
             </TableRow>
@@ -173,11 +202,16 @@ const Page = ({ object, data, AddModel, handleStats }) => {
           No results found.
         </p>
       )}
-      <AddModel
-        data={data}
-        open={open}
-        onClose={() => setOpen(false)}
-        onSubmit={(data) => console.log(data)}
+      <AddModel data={data} open={open} onClose={() => setOpen(false)} />
+      <ViewModel
+        open={openViewModel}
+        onClose={() => setOpenViewModel(false)}
+        client={selectedClient}
+      />
+      <StatsModel
+        open={openStatsModel}
+        setOpen={setOpenStatsModel}
+        onClose={() => setOpenStatsModel(false)}
       />
     </div>
   );
