@@ -71,7 +71,7 @@ const Page = ({
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
 
-    const matchesDate = !selectedDate || new Date(row.date) >= selectedDate;
+    const matchesDate = !selectedDate || new Date(row.Date) >= selectedDate;
 
     return matchesSearch && matchesDate;
   });

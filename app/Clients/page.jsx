@@ -2,9 +2,9 @@
 import React from "react";
 import object from "@/app/Texts/content.json";
 import Table from "@/app/component/Table/page";
-import AddModal from "@/app/component/AddClient/page";
-import ConsulteClientModal from "@/app/component/ConsulteClient/page";
-import StatsClientModel from "@/app/component/StatsClient/page";
+import AddModal from "@/app/component/Client/AddClient/page";
+import ConsulteClientModal from "@/app/component/Client/ConsulteClient/page";
+import StatsClientModel from "@/app/component/Client/StatsClient/page";
 
 const data = object.Clients;
 const Page = () => {
@@ -15,7 +15,7 @@ const Page = () => {
       FullName: "Bob Smith",
       Num: "C002",
       Address: "456 Oak Ave, Townsville",
-      date: "1990-09-23",
+      Date: "1990-09-23",
       DateNaissance: "1990-09-23",
       Plan: "Mois",
       Balance: 0,
@@ -31,7 +31,7 @@ const Page = () => {
       FullName: "Charlie Brown",
       Num: "C003",
       Address: "789 Pine Rd, Villagetown",
-      date: "1988-12-01",
+      Date: "2025-05-26",
       DateNaissance: "1988-12-01",
       Plan: "Seance",
       Balance: 75,

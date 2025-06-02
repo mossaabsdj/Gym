@@ -12,7 +12,65 @@
     { "title": "Employees", "icon": "Employees.png", "url": "Employees" }
   ],
   "Paiments": {
-    "title": "Paiments"
+    "title": "Paiments",
+    "AddModel": {
+      "fields": [
+        {
+          "accessor": "FullName",
+          "label": "Full Name",
+          "type": "text"
+        },
+        {
+          "accessor": "CodeBar",
+          "label": "Code Bar",
+          "type": "text"
+        },
+        {
+          "accessor": "Num",
+          "label": "Phone Number",
+          "type": "text"
+        },
+        {
+          "accessor": "Address",
+          "label": "Address",
+          "type": "text"
+        },
+        {
+          "accessor": "DateNaissance",
+          "label": "Date de Naissance",
+          "type": "date"
+        },
+        {
+          "accessor": "Balance",
+          "label": "Balance",
+          "type": "text"
+        },
+        {
+          "accessor": "CurrentOffer",
+          "label": "Offre actuelle",
+          "type": "text"
+        }
+      ],
+      "searchTrainer": "Search Trainer",
+      "searchPlaceholder": "Enter name or code bar",
+      "trainerDetails": "Trainer Details",
+      "notFound": "Trainer not found.",
+      "customAmount": "Montant personnalisé",
+      "customAmountPlaceholder": "Entrer le montant",
+      "selectedOffer": "Offre sélectionnée",
+      "customAmountLabel": "Montant personnalisé",
+      "endOfferLabel": "Fin"
+    },
+    "table": {
+      "columns": [
+        { "accessor": "FullName", "label": "Full Name", "sortable": true },
+        { "accessor": "Amount", "label": "Amount", "sortable": true },
+        { "accessor": "Date", "label": "Date", "sortable": true },
+        { "accessor": "Employee", "label": "Employee", "sortable": false },
+        { "accessor": "Type", "label": "Type", "sortable": false }
+      ],
+      "SearchPlaceHolder": "Search Paiments..."
+    }
   },
   "Sessions": {
     "title": "Sessions"
@@ -39,7 +97,7 @@
           "label": "Date de Naissance",
           "sortable": true
         },
-        { "accessor": "date", "label": "Date", "sortable": true }
+        { "accessor": "Date", "label": "Date", "sortable": true }
       ],
 
       "SearchPlaceHolder": "Search Clients..."
@@ -111,6 +169,7 @@
     "View": "View",
     "Edit": "Edit",
     "Save": "Save",
+    "Valider": "Valider",
     "Cancel": "Cancel",
     "Close": "Close",
     "Stats": "Stats",
@@ -130,6 +189,8 @@
     "View": "View",
     "Actions": "Actions",
     "ClickToPrint": "Click to print",
+    "MAD": "DA",
+
     "mounts": [
       "Jan",
       "Feb",
